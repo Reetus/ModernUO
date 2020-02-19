@@ -1533,7 +1533,7 @@ namespace Server.Items
         Item item = items[i];
 
         if (item is T typedItem)
-          if (predicate?.Invoke(typedItem) == true)
+          if (predicate == null || predicate(typedItem))
             list.Add(typedItem);
 
         if (recurse && item is Container)
@@ -1556,7 +1556,7 @@ namespace Server.Items
 
         if (item is T typedItem)
         {
-          if (predicate?.Invoke(typedItem) == true)
+          if (predicate == null || predicate(typedItem))
             return typedItem;
         }
         else if (recurse && item is Container)
