@@ -498,6 +498,11 @@ namespace Server.Items
 
         ImmolatingWeaponSpell.StopImmolating(this);
 
+        if (m is PlayerMobile playerMobile)
+        {
+          playerMobile.LastWeapon = this;
+        }
+
         m.CheckStatTimers();
 
         m.Delta(MobileDelta.WeaponDamage);

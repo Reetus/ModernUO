@@ -4590,6 +4590,9 @@ namespace Server.Mobiles
     [CommandProperty(AccessLevel.GameMaster)]
     public int KnownRecipes => m_AcquiredRecipes?.Count ?? 0;
 
+    [CommandProperty(AccessLevel.GameMaster)]
+    public Item LastWeapon { get; set; }
+
     #endregion
 
     #region Buff Icons
