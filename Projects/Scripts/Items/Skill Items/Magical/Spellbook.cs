@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Server.Commands;
 using Server.Engines.Craft;
 using Server.Ethics;
+using Server.Mobiles;
 using Server.Multis;
 using Server.Network;
 using Server.Spells;
@@ -548,6 +549,11 @@ namespace Server.Items
         from.RemoveStatMod($"{modName}Str");
         from.RemoveStatMod($"{modName}Dex");
         from.RemoveStatMod($"{modName}Int");
+
+        if (from is PlayerMobile playerMobile)
+        {
+          playerMobile.LastWeapon = this;
+        }
 
         from.CheckStatTimers();
       }
